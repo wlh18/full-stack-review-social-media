@@ -28,13 +28,21 @@ massive({
   console.log("DB connected");
 });
 
-//auth endpoints
+//#auth endpoints
 app.post("/api/login", authCtrl.login);
 app.post("/api/register", authCtrl.register);
 app.post("/api/logout", authCtrl.logout);
 app.get("/api/user", authCtrl.getUser);
 
+//#post endpoints
+//?user id
 app.get("/api/posts/:id", ctrl.getPosts);
+//?user id
+app.post("/api/posts/:id", ctrl.addPost);
+//?post id
+app.put("/api/posts/:id", ctrl.editPost);
+//?post id
+app.delete("/api/delete/:id", ctrl.deletePost);
 
 const port = SERVER_PORT;
 app.listen(port, () => console.log(`Server running on ${port}`));

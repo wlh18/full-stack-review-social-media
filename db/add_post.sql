@@ -1,0 +1,1 @@
+INSERT INTO post (user_id, text) VALUES ($1, $2) RETURNING *;
