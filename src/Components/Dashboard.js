@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
 import PostDisplay from "./PostDisplay";
 
 class Dashboard extends Component {
@@ -13,60 +11,32 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.getPosts();
+
   }
 
   getPosts = () => {
-    axios
-      .get(`/api/posts/${this.props.user.user_id}`)
-      .then(res => {
-        this.setState({ posts: res.data });
-      })
-      .catch(err => console.log(err));
+      
   };
 
   handleChange = e => {
-    this.setState({ userInput: e.target.value });
+    
   };
 
   handleClick = () => {
-    axios
-      .post(`/api/posts/${this.props.user.user_id}`, {
-        post: this.state.userInput
-      })
-      .then(() => {
-        this.getPosts();
-      })
-      .catch(err => console.log(err));
   };
 
-  handleEdit = (post_id, text) => {
-    axios
-      .put(`/api/posts/${post_id}`, { text })
-      .then(() => {
-        this.getPosts();
-      })
-      .catch(err => console.log(err));
+  handleEdit = () => {
+   
   };
 
-  handleDelete = post_id => {
-    console.log("fired: post id", post_id);
-    axios
-      .delete(`/api/posts/${post_id}`)
-      .then(() => {
-        this.getPosts();
-      })
-      .catch(err => console.log(err));
+  handleDelete = () => {
   };
 
   render() {
     const mappedPosts = this.state.posts.map((post, index) => {
       return (
         <PostDisplay
-          handleEdit={this.handleEdit}
-          handleDelete={this.handleDelete}
-          key={index}
-          post={post}
+        //something goes here
         />
       );
     });
@@ -78,18 +48,22 @@ class Dashboard extends Component {
             cols="60"
             rows="2"
             placeholder="New post..."
-            value={this.state.userInput}
+            value={
+              //something goes here
+            }
             onChange={e => {
               this.handleChange(e);
             }}
           />
-          <button onClick={this.handleClick} className="input-container-button">
+          <button onClick={
+            //something goes here
+          } className="input-container-button">
             Post
           </button>
         </div>
 
         <section className="app-body">
-          <div className="padding"></div>
+          <div className="padding"/>
           <ul className="flex-vertical-center post-feed">{mappedPosts}</ul>
         </section>
       </>
@@ -97,8 +71,4 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = reduxState => {
-  return reduxState;
-};
-
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;
