@@ -13,27 +13,51 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    this.getPosts();
+  }
+
+  getPosts = () => {
     axios
       .get(`/api/posts/${this.props.user.user_id}`)
       .then(res => {
         this.setState({ posts: res.data });
       })
       .catch(err => console.log(err));
-  }
+  };
 
   handleChange = e => {
     this.setState({ userInput: e.target.value });
   };
 
   handleClick = () => {
-    axios.post(`/api/posts/${this.props.user.user_id}`, {
-      post: this.state.userInput
-    });
+    axios
+      .post(`/api/posts/${this.props.user.user_id}`, {
+        post: this.state.userInput
+      })
+      .then(() => {
+        this.getPosts();
+      })
+      .catch(err => console.log(err));
   };
 
-  handleEdit = () => {};
+  handleEdit = (post_id, text) => {
+    axios
+      .put(`/api/posts/${post_id}`, { text })
+      .then(() => {
+        this.getPosts();
+      })
+      .catch(err => console.log(err));
+  };
 
-  handleDelete = () => {};
+  handleDelete = post_id => {
+    console.log("fired: post id", post_id);
+    axios
+      .delete(`/api/posts/${post_id}`)
+      .then(() => {
+        this.getPosts();
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     const mappedPosts = this.state.posts.map((post, index) => {
@@ -66,7 +90,7 @@ class Dashboard extends Component {
 
         <section className="app-body">
           <div className="padding"></div>
-          <ul className="flex-horizontal-center post-feed">{mappedPosts}</ul>
+          <ul className="flex-vertical-center post-feed">{mappedPosts}</ul>
         </section>
       </>
     );

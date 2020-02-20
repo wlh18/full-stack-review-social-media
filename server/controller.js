@@ -3,45 +3,46 @@ module.exports = {
     //#user id
     const { id } = req.params;
     const db = req.app.get("db");
-    await db
-      .get_posts(id)
-      .then(posts => {
-        res.status(200).send(posts);
-      })
-      .catch(err => res.status(500).send(err));
-  },
-  addPost: async (req, res) => {
-    //#user id
-    const { id } = req.params;
-    const { post } = req.body;
-    const db = req.app.get("db");
-    const posts = await db.add_post(id, post);
+    const posts = await db.get_posts(id);
     if (posts[0]) {
-      res.status(201).send(posts);
+      posts.forEach((e, i) => (posts[i].p_time = e.p_time.toDateString()));
+      res.status(200).send(posts);
     } else {
       res.sendStatus(500);
     }
   },
+  addPost: (req, res) => {
+    //#user id
+    const { id } = req.params;
+    const { post } = req.body;
+    const db = req.app.get("db");
+    db.add_post([id, post, new Date()])
+      .then(() => {
+        res.sendStatus(201);
+      })
+      .catch(() => {
+        res.sendStatus(500);
+      });
+  },
   editPost: (req, res) => {
     //#post id
     const { id } = req.params;
+    const { text } = req.body;
     const db = req.app.get("db");
-    db.edit_post(id).then(posts => {
-      res
-        .status(200)
-        .send(posts)
-        .catch(err => res.status(500).send(err));
-    });
+    db.edit_post([id, text])
+      .then(posts => {
+        res.sendStatus(200);
+      })
+      .catch(err => res.status(500).send(err));
   },
   deletePost: (req, res) => {
     //#post id
     const { id } = req.params;
     const db = req.app.get("db");
-    db.delete_post(id).then(posts => {
-      res
-        .status(200)
-        .send(posts)
-        .catch(err => res.status(500).send(err));
-    });
+    db.delete_post([id])
+      .then(() => {
+        res.sendStatus(200);
+      })
+      .catch(err => res.status(500).send(err));
   }
 };

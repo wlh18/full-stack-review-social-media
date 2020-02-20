@@ -1,8 +1,10 @@
 import React from "react";
+import Post from "./Post";
+import Edit from "./Edit";
 
 class PostDisplay extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isEditing: false
     };
@@ -14,32 +16,23 @@ class PostDisplay extends React.Component {
 
   render() {
     return (
-      <li className="post-container">
-        <div>
-          <p className="post-text">{this.props.post.text}</p>
-        </div>
-        <div className="post-buttons">
-          {this.state.isEditing ? (
-            <div className="edit-wrapper">
-              <button></button>
-              <button></button>
-            </div>
-          ) : (
-            <div className="edit-wrapper">
-              <button
-                className="input-container-button-small"
-                onClick={() => {
-                  this.toggleEdit();
-                  this.props.handleEdit();
-                }}
-              >
-                edit
-              </button>
-            </div>
-          )}
-          <button className="input-container-button-small">delete</button>
-        </div>
-      </li>
+      <>
+        {this.state.isEditing ? (
+          <Edit
+            id={this.props.post.post_id}
+            text={this.props.post.text}
+            toggleEdit={this.toggleEdit}
+            handleEdit={this.props.handleEdit}
+          />
+        ) : (
+          <Post
+            id={this.props.post.post_id}
+            text={this.props.post.text}
+            toggleEdit={this.toggleEdit}
+            handleDelete={this.props.handleDelete}
+          />
+        )}
+      </>
     );
   }
 }
