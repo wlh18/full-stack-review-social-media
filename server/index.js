@@ -42,7 +42,7 @@ app.post("/api/posts/:id", ctrl.addPost);
 //?post id
 app.put("/api/posts/:id", ctrl.editPost);
 //?post id
-app.delete("/api/delete/:id", ctrl.deletePost);
+app.delete("/api/posts/:id", ctrl.deletePost);
 
 const port = SERVER_PORT;
 app.listen(port, () => console.log(`Server running on ${port}`));

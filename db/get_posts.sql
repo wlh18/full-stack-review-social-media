@@ -1,2 +1,3 @@
-select * from post
-where user_id = $1;
+SELECT * FROM post
+WHERE user_id = $1
+ORDER BY post_id ASC;

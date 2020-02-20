@@ -7,5 +7,6 @@ create table users (
 create table if not exists post (
     post_id serial primary key,
     user_id int references users(user_id),
-    text varchar(250)
+    text varchar(250),
+    p_time date
 );
