@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
-import { getUser } from "../redux/reducer";
+import { getUser } from "../../redux/reducer";
 
 class Landing extends Component {
   constructor() {
@@ -15,7 +15,6 @@ class Landing extends Component {
   }
 
   handleInput = event => {
-    console.log(event.target.name);
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -35,10 +34,10 @@ class Landing extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="app-body">
         <div className="input-container">
+          <p className="above-input">Don't have an account? Register here: </p>
           <div className="flex-horizontal inputs">
             <div className="flex-vertical">
               <input
@@ -63,7 +62,6 @@ class Landing extends Component {
             </button>
           </div>
           <div className="flex-horizontal link">
-            <span>Don't have an account? Register here: </span>
             <Link to="/register" className="input-container-button">
               Register
             </Link>

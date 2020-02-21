@@ -15,21 +15,25 @@ class PostDisplay extends React.Component {
   };
 
   render() {
+    const { text, post_id, p_time } = this.props.post;
+    const { handleDelete, handleEdit } = this.props;
     return (
       <>
         {this.state.isEditing ? (
           <Edit
-            id={this.props.post.post_id}
-            text={this.props.post.text}
+            id={post_id}
+            text={text}
+            time={p_time}
             toggleEdit={this.toggleEdit}
-            handleEdit={this.props.handleEdit}
+            handleEdit={handleEdit}
           />
         ) : (
           <Post
-            id={this.props.post.post_id}
-            text={this.props.post.text}
+            id={post_id}
+            text={text}
+            time={p_time}
             toggleEdit={this.toggleEdit}
-            handleDelete={this.props.handleDelete}
+            handleDelete={handleDelete}
           />
         )}
       </>

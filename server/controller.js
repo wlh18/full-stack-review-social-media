@@ -8,7 +8,7 @@ module.exports = {
       posts.forEach((e, i) => (posts[i].p_time = e.p_time.toDateString()));
       res.status(200).send(posts);
     } else {
-      res.sendStatus(500);
+      res.status(200).send([]);
     }
   },
   addPost: (req, res) => {

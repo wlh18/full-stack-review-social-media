@@ -21,6 +21,7 @@ const Post = props => {
         >
           Delete
         </button>
+        <span className="date-span">{props.time}</span>
       </div>
     </li>
   );

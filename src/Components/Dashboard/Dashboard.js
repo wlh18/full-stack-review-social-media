@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import PostDisplay from "./PostDisplay";
+import { getUser } from "../../redux/reducer";
+import PostDisplay from "../PostDisplay/PostDisplay";
 
 class Dashboard extends Component {
   constructor() {
@@ -13,6 +14,15 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    if (this.props.user === {}) {
+      axios.get("/api/user").then(res => {
+        if (res.data) {
+          this.props.getUser(res.data);
+        } else {
+          this.props.history.push("/");
+        }
+      });
+    }
     this.getPosts();
   }
 
@@ -20,7 +30,7 @@ class Dashboard extends Component {
     axios
       .get(`/api/posts/${this.props.user.user_id}`)
       .then(res => {
-        this.setState({ posts: res.data });
+        this.setState({ posts: [...res.data] });
       })
       .catch(err => console.log(err));
   };
@@ -60,19 +70,25 @@ class Dashboard extends Component {
   };
 
   render() {
-    const mappedPosts = this.state.posts.map((post, index) => {
-      return (
-        <PostDisplay
-          handleEdit={this.handleEdit}
-          handleDelete={this.handleDelete}
-          key={index}
-          post={post}
-        />
-      );
-    });
+    console.log(this.state.posts);
+    let mappedPosts;
+    if (this.state.posts[0]) {
+      mappedPosts = this.state.posts.map((post, index) => {
+        return (
+          <PostDisplay
+            handleEdit={this.handleEdit}
+            handleDelete={this.handleDelete}
+            key={index}
+            post={post}
+          />
+        );
+      });
+    } else {
+      mappedPosts = <div>No Posts Yet!</div>;
+    }
     return (
       <>
-        <div className="input-container">
+        <div className="dashboard-input">
           <textarea
             id="new-post"
             cols="60"
@@ -101,4 +117,4 @@ const mapStateToProps = reduxState => {
   return reduxState;
 };
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, { getUser })(Dashboard);
