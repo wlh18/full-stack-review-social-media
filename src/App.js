@@ -1,25 +1,15 @@
-import React from "react";
-import Header from "./Components/Header";
-import AuthHeader from "./Components/AuthHeader";
-import "./App.css";
+import React from 'react'
+import AuthHeader from './Components/AuthHeader'
+import Profile from './Components/Profile'
+import './App.css'
 
 function App(props) {
   return (
     <div className="App">
-      {props.location.pathname === "/" ||
-      props.location.pathname === "/register" ? (
-        <>
-          <AuthHeader />
-
-        </>
-      ) : (
-        <>
-          <Header />
- 
-        </>
-      )}
+      <AuthHeader />
+      <Profile />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

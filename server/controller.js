@@ -1,18 +1,18 @@
 module.exports = {
   getPosts: (req, res) => {
-    //#user id
+    //TODO Get all posts
     
   },
   addPost: (req, res) => {
-    //#user id
+    //TODO Create new post
   
   },
   editPost: (req, res) => {
-    //#post id
+    //TODO Edit existing post
 
   },
   deletePost: (req, res) => {
-    //#post id
+    //TODO Delete existing post
    
   }
 };

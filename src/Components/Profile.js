@@ -1,18 +1,25 @@
-import React from 'react';
+import React from 'react'
+
+//TODO Build out function
 
 const Profile = (props) => {
-
-    const logout = () => {
+  const logout = () => {
     //something goes here
-    }
+  }
 
-    return(
-        <div>
-            <p>{props.user.user_id}</p>
-            <p>{props.user.user_email}</p>
-            <button onClick={logout}>Log out</button>
-        </div>
-    )
+  return (
+    <div>
+      <p>{/* user_id*/}</p>
+      <p>{/*email */}</p>
+      <button
+        onClick={() => {
+          //something goes here
+        }}
+      >
+        Log out
+      </button>
+    </div>
+  )
 }
 
-export default Profile;
+export default Profile

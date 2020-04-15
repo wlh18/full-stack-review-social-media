@@ -1,22 +1,17 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
 
 class Register extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      email: "",
-      password: ""
-    };
+      email: '',
+      password: '',
+    }
   }
 
-  handleInput = event => {
+  handleInput = (event) => {}
 
-  };
-
-  handleRegister = () => {
-   
-  };
+  handleRegister = () => {}
 
   render() {
     return (
@@ -28,24 +23,24 @@ class Register extends Component {
                 maxLength="100"
                 placeholder="Enter Email"
                 name="email"
-                onChange={
+                onChange={() => {
                   //something goes here
-                }
+                }}
               />
               <input
                 type="password"
                 maxLength="20"
                 placeholder="Enter Password"
                 name="password"
-                onChange={
+                onChange={() => {
                   //something goes here
-                }
+                }}
               />
             </div>
             <button
-              onClick={
+              onClick={() => {
                 //something goes here
-              }
+              }}
               className="input-container-button"
             >
               Register
@@ -53,14 +48,12 @@ class Register extends Component {
           </div>
           <div className="flex-horizontal link">
             <span>Already have an account? login here: </span>
-            <Link to="/" className="input-container-button">
-              Log in
-            </Link>
+            {/* TODO Link to landing. className='input-container-button' */}
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Register;
+export default Register

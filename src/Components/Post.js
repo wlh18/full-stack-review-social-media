@@ -1,33 +1,37 @@
-import React from "react";
+import React from 'react'
 
-const Post = props => {
+//TODO Fill out post content
+
+const Post = (props) => {
   return (
     <li className="post-container">
       <div>
-        <p className="post-text">{
-        //something goes here
-      }</p>
+        <p className="post-text">
+          {
+            //something goes here
+          }
+        </p>
       </div>
       <div className="post-buttons">
         <button
           className="input-container-button-small"
-          onClick={
-           //something goes here
-          }
+          onClick={() => {
+            //something goes here
+          }}
         >
           Edit
         </button>
         <button
           className="input-container-button-small"
-          onClick={
+          onClick={() => {
             //something goes here
-          }
+          }}
         >
           Delete
         </button>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post

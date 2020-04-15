@@ -1,21 +1,17 @@
 //!No need to change anything in here
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+//TODO Convert Dashboard & Profile to links
 
 const Header = () => {
   return (
     <nav className="nav-header">
       <h1>SOSMS</h1>
       <div className="nav-links">
-        <div>
-          <Link to="/dash">Dashboard</Link>
-        </div>
-        <div>
-          <Link to="/profile">Profile</Link>
-        </div>
+        <div>Dashboard</div>
+        <div>Profile</div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

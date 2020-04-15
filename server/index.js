@@ -1,12 +1,7 @@
+//TODO Basic express setup
+
 //#auth endpoints
-//TODO login, register, logout, get user
+//TODO login, register, logout, getUser
 
-//#post endpoints
+//#posts endpoints
 //TODO get post put delete posts
-//?user id
-
-//?user id
-
-//?post id
-
-//?post id

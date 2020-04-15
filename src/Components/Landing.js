@@ -1,22 +1,19 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
 
+//TODO Write all methods, connect to store, connect methods to JSX
 class Landing extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      email: "",
-      password: ""
-    };
+      email: '',
+      password: '',
+    }
     //this.handleLogin = this.handleLogin.bind(this)
   }
 
-  handleInput = () => {
-  };
+  handleInput = () => {}
 
-  handleLogin = () => {
-   
-  };
+  handleLogin = () => {}
 
   render() {
     return (
@@ -28,24 +25,24 @@ class Landing extends Component {
                 maxLength="100"
                 placeholder="Enter Email"
                 name="email"
-                onChange={
+                onChange={() => {
                   //something goes here
-                }
+                }}
               />
               <input
                 type="password"
                 maxLength="20"
                 placeholder="Enter Password"
                 name="password"
-                onChange={
+                onChange={() => {
                   //something goes here
-                }
+                }}
               />
             </div>
             <button
-              onClick={
-            //something goes here
-          }
+              onClick={() => {
+                //something goes here
+              }}
               className="input-container-button"
             >
               Log in
@@ -53,14 +50,12 @@ class Landing extends Component {
           </div>
           <div className="flex-horizontal link">
             <span>Don't have an account? Register here: </span>
-            <Link to="/register" className="input-container-button">
-              Register
-            </Link>
+            {/* TODO Link to register page. className='input-container-button'  */}
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Landing;
+export default Landing

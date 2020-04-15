@@ -1,21 +1,19 @@
-import React from "react";
+import React from 'react'
+
+//TODO Write methods, connect to JSX
 
 class Edit extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       //something goes here
-    };
+    }
   }
 
-  handleCancel = () => {
- 
-  };
+  handleCancel = () => {}
 
-  handleChange = () => {
-    
-  };
+  handleChange = () => {}
 
   render() {
     return (
@@ -24,34 +22,35 @@ class Edit extends React.Component {
           <input
             className="post-text"
             value={
+              null
               //something goes here
             }
-            onChange={
+            onChange={() => {
               //something goes here
-            }
+            }}
           />
         </div>
         <div className="post-buttons">
-            <button
-              className="input-container-button-small"
-              onClick={() => {
-               //something goes here
-              }}
-            >
-              Cancel
-            </button>
-            <button
-              className="input-container-button-small"
-              onClick={() => {
-               //something goes here
-              }}
-            >
-              Save
-            </button>
+          <button
+            className="input-container-button-small"
+            onClick={() => {
+              //something goes here
+            }}
+          >
+            Cancel
+          </button>
+          <button
+            className="input-container-button-small"
+            onClick={() => {
+              //something goes here
+            }}
+          >
+            Save
+          </button>
         </div>
       </li>
-    );
+    )
   }
 }
 
-export default Edit;
+export default Edit

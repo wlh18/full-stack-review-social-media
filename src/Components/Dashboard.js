@@ -1,45 +1,36 @@
-import React, { Component } from "react";
-import PostDisplay from "./PostDisplay";
+import React, { Component } from 'react'
+import PostContainer from './PostContainer'
 
+//TODO Write all methods, connect to store, connect methods to jsx.
 class Dashboard extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       posts: [],
-      userInput: ""
-    };
+      userInput: '',
+    }
   }
 
-  componentDidMount() {
+  componentDidMount() {}
 
-  }
+  getPosts = () => {}
 
-  getPosts = () => {
-      
-  };
+  handleChange = (e) => {}
 
-  handleChange = e => {
-    
-  };
+  handleClick = () => {}
 
-  handleClick = () => {
-  };
+  handleEdit = () => {}
 
-  handleEdit = () => {
-   
-  };
-
-  handleDelete = () => {
-  };
+  handleDelete = () => {}
 
   render() {
     const mappedPosts = this.state.posts.map((post, index) => {
       return (
-        <PostDisplay
+        <PostContainer
         //something goes here
         />
-      );
-    });
+      )
+    })
     return (
       <>
         <div className="input-container">
@@ -48,27 +39,30 @@ class Dashboard extends Component {
             cols="60"
             rows="2"
             placeholder="New post..."
-            value={
+            value={() => {
               //something goes here
-            }
-            onChange={e => {
-              this.handleChange(e);
+            }}
+            onChange={() => {
+              //something goes here
             }}
           />
-          <button onClick={
-            //something goes here
-          } className="input-container-button">
+          <button
+            onClick={() => {
+              //something goes here
+            }}
+            className="input-container-button"
+          >
             Post
           </button>
         </div>
 
         <section className="app-body">
-          <div className="padding"/>
+          <div className="padding" />
           <ul className="flex-vertical-center post-feed">{mappedPosts}</ul>
         </section>
       </>
-    );
+    )
   }
 }
 
-export default Dashboard;
+export default Dashboard
