@@ -29,11 +29,27 @@ class Dashboard extends Component {
       })
   }
 
-  getPosts = () => {}
+  handleChange = (e) => {
+    this.setState({
+      userInput: e.target.value,
+    })
+  }
 
-  handleChange = (e) => {}
+  handleClick = () => {
+    const body = {
+      users_id: this.props.user.users_id,
+      content: this.state.userInput,
+    }
 
-  handleClick = () => {}
+    if (body.content) {
+      axios.post('/api/posts', body).then((res) => {
+        this.setState({
+          posts: res.data,
+          userInput: '',
+        })
+      })
+    }
+  }
 
   handleEdit = () => {}
 
@@ -41,11 +57,7 @@ class Dashboard extends Component {
 
   render() {
     const mappedPosts = this.state.posts.map((post, index) => {
-      return (
-        <PostContainer
-        //something goes here
-        />
-      )
+      return <PostContainer data={post} key={post.post_id} />
     })
     return (
       <>
@@ -55,16 +67,14 @@ class Dashboard extends Component {
             cols="60"
             rows="2"
             placeholder="New post..."
-            value={() => {
-              //something goes here
-            }}
-            onChange={() => {
-              //something goes here
+            value={this.state.userInput}
+            onChange={(e) => {
+              this.handleChange(e)
             }}
           />
           <button
             onClick={() => {
-              //something goes here
+              this.handleClick()
             }}
             className="input-container-button"
           >
