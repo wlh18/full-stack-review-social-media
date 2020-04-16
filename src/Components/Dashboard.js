@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import PostContainer from './PostContainer'
+import { connect } from 'react-redux'
+import { getUser } from '../ducks/reducer'
+import axios from 'axios'
 
 //TODO Write all methods, connect to store, connect methods to jsx.
 class Dashboard extends Component {
@@ -11,7 +14,20 @@ class Dashboard extends Component {
     }
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props
+      .getUser()
+      .then(() => {
+        axios.get('/api/posts').then((res) => {
+          this.setState({
+            posts: res.data,
+          })
+        })
+      })
+      .catch(() => {
+        this.props.history.push('/')
+      })
+  }
 
   getPosts = () => {}
 
@@ -65,4 +81,6 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+const mapStateToProps = (reduxState) => reduxState
+
+export default connect(mapStateToProps, { getUser })(Dashboard)
